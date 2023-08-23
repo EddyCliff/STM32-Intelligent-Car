@@ -20,8 +20,22 @@
 `HAREWARE`文件夹放置的是：按键，led硬件相关
 
 `MiniBalance`文件夹放置的是：控制函数和数据处理
+
 ## `MiniBalance.c`
 ```c
-
+#include "stm32f10x.h"
+#include "sys.h"
+u8 Way_Angle=2;                             //获取角度的算法，1：四元数  2：卡尔曼  3：互补滤波 
+u8 Flag_front,Flag_back,Flag_Left,Flag_Right,Flag_velocity=2; //蓝牙遥控相关的变量
+u8 Flag_Stop=1,Flag_Show=0;                 //电机停止标志位和显示标志位  默认停止 显示打开
+int Motor_Left,Motor_Right;                 //电机PWM变量 应是Motor的 向Moto致敬	
+int Temperature;                            //温度变量
+int Voltage;                                //电池电压采样相关的变量
+float Angle_Balance,Gyro_Balance,Gyro_Turn; //平衡倾角 平衡陀螺仪 转向陀螺仪
+u32 Distance;                               //超声波测距
+u8 delay_50,delay_flag,PID_Send; 						//延时和调参相关变量
+u8 Flag_follow=0,Flag_avoid=0;							//超声波跟随、超声波壁障标志位
+float Acceleration_Z;                       //Z轴加速度计  
+float Balance_Kp=22500,Balance_Kd=108,Velocity_Kp=16000,Velocity_Ki=80,Turn_Kp=4200,Turn_Kd=0;//PID参数（放大100倍）
 ```
 
