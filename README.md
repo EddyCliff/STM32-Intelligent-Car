@@ -39,7 +39,7 @@ float Acceleration_Z;                       //Z轴加速度计
 float Balance_Kp=22500,Balance_Kd=108,Velocity_Kp=16000,Velocity_Ki=80,Turn_Kp=4200,Turn_Kd=0;//PID参数（放大100倍）
 int main(void)
 { 
-    MY_NVIC_PriorityGroupConfig(2);	//设置中断分组
+	MY_NVIC_PriorityGroupConfig(2);	//设置中断分组
 	delay_init();	    	            //延时函数初始化	
 	JTAG_Set(JTAG_SWD_DISABLE);     //关闭JTAG接口
 	JTAG_Set(SWD_ENABLE);           //打开SWD接口 可以利用主板的SWD接口调试
